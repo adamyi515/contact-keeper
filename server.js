@@ -1,7 +1,14 @@
 const express = require('express');
 const app = express();
+const connectDB = require('./config/db');
 
 const PORT = process.env.PORT || 4000;
+
+// Body Parser Middleware
+app.use(express.json({ extended: false }));
+
+// Connect to MongoDB
+connectDB();
 
 
 // Set up routes
