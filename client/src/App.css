@@ -1,11 +1,45 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 /************ UTILITES (GLOBAL STYLES)  ******************/
 .link {
   text-decoration: none;
-  color: white;
+  color: #fff;
+}
+
+.btn {
+  color: #fff;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.btn-standard {
+  background-color: #333333;
+}
+
+.btn-danger {
+  background-color: #dc3545;
 }
 
 .container {
   margin: 0 auto;
   width: 70%;
   margin-top: 20px;
+}
+
+.badge-primary {
+  background-color: #003699;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.badge-success {
+  background-color: #28a745;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
 }
