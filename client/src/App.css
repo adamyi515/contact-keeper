@@ -5,23 +5,8 @@
 }
 
 /************ UTILITES (GLOBAL STYLES)  ******************/
-.link {
-  text-decoration: none;
-  color: #fff;
-}
-
-.btn {
-  color: #fff;
-  padding: 5px 10px;
-  margin: 5px;
-}
-
-.btn-standard {
-  background-color: #333333;
-}
-
-.btn-danger {
-  background-color: #dc3545;
+.text-center {
+  text-align: center;
 }
 
 .container {
@@ -42,4 +27,44 @@
   color: #fff;
   padding: 5px 10px;
   border-radius: 10px;
+}
+
+/************ BUTTONS (GLOBAL STYLES)  ******************/
+.link {
+  text-decoration: none;
+  color: #fff;
+}
+.btn {
+  cursor: pointer;
+}
+
+.btn-standard {
+  background-color: #333333;
+  color: #fff;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 10px;
+  color: #fff;
+  background-color: #003699;
+}
+
+/************ FORM (GLOBAL STYLES)  ******************/
+.form-group {
+  padding: 10px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 5px;
 }
