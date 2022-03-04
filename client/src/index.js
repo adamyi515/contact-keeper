@@ -7,12 +7,17 @@ import reportWebVitals from './reportWebVitals';
 // Components
 import { BrowserRouter } from 'react-router-dom';
 
+// Context
+import ContactState from './context/contact/ContactState';
+
 ReactDOM.render(
-  <BrowserRouter>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </BrowserRouter>,
+  <ContactState>
+    <BrowserRouter>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </BrowserRouter>
+  </ContactState>,
   document.getElementById('root')
 );
 
