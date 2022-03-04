@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 // Component
 import ContactItem from '../contact-item/contact-item.component'
