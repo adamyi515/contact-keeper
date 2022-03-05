@@ -1,12 +1,11 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import './contact-form.styles.css';
 
 // Context
 import { ContactContext } from '../../context/contact/contactContext';
 
 const ContactForm = () => {
-  const { addContact } = useContext(ContactContext);
-
+  const { addContact, currentContact, editContact } = useContext(ContactContext);
 
   const [contact, setContact] = useState({
     name: '',
@@ -18,28 +17,50 @@ const ContactForm = () => {
   // Destructure contact object.
   const { name, email, phone, type } = contact;
 
-
-  // Methods
-  const handleSubmit = ev => {
-    ev.preventDefault();
-    // If name AND email is NOT empty, then go ahead and make an Action to change the state.
-    if(contact.name !== '' && contact.email !== ''){
-      addContact(contact);
+  useEffect(() => {
+    if(currentContact !== null){
+      setContact(currentContact);
+    } else {
       setContact({
         name: '',
         email: '',
         phone: '',
         type: 'personal'
-      })
+      });
     }
-  }
+  }, [currentContact])
 
+
+  // Methods ////////////////////////////////////////////
   const handleChange = ev => {
     setContact({
       ...contact,
       [ev.target.name]: ev.target.value
-    });
+    })
   }
+
+  const handleSubmit = ev => {
+    ev.preventDefault();
+
+    if(currentContact === null){
+       // If name AND email is NOT empty, then go ahead and make an Action to change the state.
+      if(contact.name !== '' && contact.email !== ''){
+        addContact(contact);
+        setContact({
+          name: '',
+          email: '',
+          phone: '',
+          type: 'personal'
+        });
+      }
+    } else if(currentContact){
+      // If currentContact is NOT empty then UPDATE.
+      editContact(contact);
+    }
+    
+  }
+
+  
 
 
   return (
@@ -61,9 +82,16 @@ const ContactForm = () => {
           <input type='radio' name='type' value='professional' onChange={handleChange} checked={type === 'professional'} /> Professional {' '}
         </div>
         <div className='form-group'>
+
           <button className='btn btn-submit'>
-            Add Contact
+            {currentContact === null ? 'Add Contact' : 'Update Contact'}
           </button>   
+
+          {currentContact &&  
+            <button className='btn btn-clear'>
+              Clear
+            </button>}
+
         </div>
       </form>
     </div>

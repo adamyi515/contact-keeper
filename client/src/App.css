@@ -59,6 +59,14 @@
   background-color: #003699;
 }
 
+.btn-clear {
+  width: 100%;
+  padding: 10px;
+  color: black;
+  background-color: #f4f4f4;
+  margin-top: 10px;
+}
+
 /************ FORM (GLOBAL STYLES)  ******************/
 .form-group {
   padding: 10px;
