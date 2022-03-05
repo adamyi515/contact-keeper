@@ -3,7 +3,7 @@ import { contactReducer } from './contactReducer';
 import { ContactContext } from './contactContext';
 import { v4 as uuid } from 'uuid';
 import {
-    ADD_CONTACT
+    ADD_CONTACT, DELETE_CONTACT
 } from '../types';
 
 
@@ -19,16 +19,23 @@ const ContactState = (props) => {
     const [state, dispatch] = useReducer(contactReducer, initialState);
 
     // ACTIONS //////////////////////
+    // Add Contact
     const addContact = newContact => {
         newContact.id = uuid();
         dispatch({ type: ADD_CONTACT, payload: newContact });
+    }
+
+    // Remove Contact
+    const deleteContact = id => {
+        dispatch({ type: DELETE_CONTACT, payload: id});
     }
 
 
     return(
         <ContactContext.Provider value={{
             contacts: state.contacts,
-            addContact
+            addContact,
+            deleteContact
         }}>
             { props.children }
         </ContactContext.Provider>

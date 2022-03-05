@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './contact-item.styles.css';
+
+// Context
+import { ContactContext } from '../../context/contact/contactContext';
 
 
 
 const ContactItem = ({ contact }) => {
     const { id, name, email, phone, type } = contact;
+    const { deleteContact } = useContext(ContactContext)
+
+    // Methods ////////////////////////////////////
+    const onDeleteContact = () => {
+        deleteContact(id);
+    }
+
 
     return (
         <div className='contact-item'>
@@ -24,7 +34,7 @@ const ContactItem = ({ contact }) => {
 
             <div className='contact-item__button-container'>
                 <button className='btn btn-standard'>Edit</button>
-                <button className='btn btn-danger'>Delete</button>
+                <button className='btn btn-danger' onClick={onDeleteContact} >Delete</button>
             </div>
         </div>
     )
