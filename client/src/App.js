@@ -15,7 +15,7 @@ import Loginpage from './components/pages/login-page.component';
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <Navbar title='Contact Keeper' />
       <div className='container'>
         <Routes>
           <Route path='/' element={<HomePage />} />
