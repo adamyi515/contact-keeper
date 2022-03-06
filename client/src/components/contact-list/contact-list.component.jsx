@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 // Context
 import {ContactContext} from '../../context/contact/contactContext';
@@ -8,12 +8,18 @@ import ContactItem from '../contact-item/contact-item.component'
 
 
 const ContactList = () => {
-  const { contacts } = useContext(ContactContext);
+  const { contacts, filteredContacts } = useContext(ContactContext);
+
+
 
   return (
     <div>
       {
-        contacts.map(contact => <ContactItem key={contact.id} contact={contact} />)
+        filteredContacts === null ? (
+          contacts.map(contact => <ContactItem key={contact.id} contact={contact} />)
+        ) : (
+          filteredContacts.map(contact => <ContactItem key={contact.id} contact={contact} />)
+        )
       }
     </div>
   )

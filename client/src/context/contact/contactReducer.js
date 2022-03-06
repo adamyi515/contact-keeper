@@ -1,5 +1,6 @@
 import {
-    ADD_CONTACT, EDIT_CONTACT, DELETE_CONTACT, SET_CURRENT_CONTACT
+    ADD_CONTACT, UPDATE_CONTACT, DELETE_CONTACT, SET_CURRENT_CONTACT,
+    FILTER_CONTACTS, CLEAR_FILTER
 } from '../types';
 
 export const contactReducer = (state, action) => {
@@ -9,7 +10,7 @@ export const contactReducer = (state, action) => {
                 ...state,
                 contacts: [...state.contacts, action.payload]
             }
-        case EDIT_CONTACT:
+        case UPDATE_CONTACT:
             return {
                 ...state,
                 currentContact: null,
@@ -30,6 +31,16 @@ export const contactReducer = (state, action) => {
             return {
                 ...state,
                 currentContact: action.payload
+            }
+        case FILTER_CONTACTS:
+            return {
+                ...state,
+                filteredContacts: state.contacts.filter(contact => contact.name.toLowerCase().includes(action.payload))
+            }
+        case CLEAR_FILTER:
+            return {
+                ...state,
+                filteredContacts: null
             }
         default:
             return state;
