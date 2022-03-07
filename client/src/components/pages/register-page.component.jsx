@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react';
+
+// Components
+import AuthRegister from '../auth-register/auth-register.component';
 
 const RegisterPage = () => {
+
   return (
-    <div>RegisterPage</div>
+    <div>
+      <AuthRegister />
+    </div>
   )
 }
 

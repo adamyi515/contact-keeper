@@ -9,15 +9,18 @@ import { BrowserRouter } from 'react-router-dom';
 
 // Context
 import ContactState from './context/contact/ContactState';
+import AuthState from './context/auth/AuthState';
 
 ReactDOM.render(
-  <ContactState>
-    <BrowserRouter>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </BrowserRouter>
-  </ContactState>,
+  <AuthState>
+    <ContactState>
+      <BrowserRouter>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </BrowserRouter>
+    </ContactState>
+  </AuthState>,
   document.getElementById('root')
 );
 
